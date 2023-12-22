@@ -6,8 +6,8 @@ if ! [ -x "$(command -v pm2)" ]; then
 fi
 
 # Folder names for crawlers
-CRAWLER_NAMES=(crawler1 crawler2 crawler3 crawler4 crawler5)
-CRAWLER_PORTS=(3001 3002 3003 3004 3005)
+CRAWLER_NAMES=(crawler1 crawler2 crawler3 crawler4 crawler5 crawler6)
+CRAWLER_PORTS=(3001 3002 3003 3004 3005 3006)
 PORT_START=3000
 
 # kill all running crawlers by crawler ports

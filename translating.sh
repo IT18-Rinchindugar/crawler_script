@@ -4,8 +4,8 @@
 CRAWLER_REPO=https://github.com/IT18-Rinchindugar/bundle.git
 
 # Folder names for crawlers
-CRAWLER_NAMES=(crawler1 crawler2 crawler3 crawler4 crawler5)
-CRAWLER_PORTS=(3001 3002 3003 3004 3005 3006 3007 3008 3009 3010)
+CRAWLER_NAMES=(crawler1 crawler2 crawler3 crawler4 crawler5 crawler6)
+CRAWLER_PORTS=(3001 3002 3003 3004 3005 3006)
 PORT_START=3000
 
 # clone repo and create environment for each crawler
@@ -16,7 +16,7 @@ do
     # is windows git bash terminal?
     if [ -x "$(command -v winpty)" ]; then
         # windows git bash terminal
-        start /B "" cmd /C "start \"\" \"C:/Program Files/Git/git-bash.exe\" -c \"cd $(pwd) && ./translate\""
+        # new terminal to run translate script
     else
         # macos terminal
         # new terminal to run script

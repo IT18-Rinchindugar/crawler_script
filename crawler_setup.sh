@@ -9,8 +9,8 @@ fi
 CRAWLER_REPO=https://github.com/IT18-Rinchindugar/bundle.git
 
 # Folder names for crawlers
-CRAWLER_NAMES=(crawler1 crawler2)
-CRAWLER_PORTS=(3001 3002 3003 3004 3005 3006 3007 3008 3009 3010)
+CRAWLER_NAMES=(crawler1 crawler2 crawler3 crawler4 crawler5 crawler6)
+CRAWLER_PORTS=(3001 3002 3003 3004 3005 3006)
 PORT_START=3000
 
 # clone repo and create environment for each crawler
