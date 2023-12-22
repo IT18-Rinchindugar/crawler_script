@@ -17,6 +17,7 @@ do
     if [ -x "$(command -v winpty)" ]; then
         # windows git bash terminal
         # new terminal to run translate script
+        start "Git Bash" "C:\Program Files\Git\git-bash.exe" -i -c "cd $(pwd); ./translate; exec bash"
     else
         # macos terminal
         # new terminal to run script
