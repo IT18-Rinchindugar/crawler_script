@@ -7,7 +7,7 @@ fi
 
 # Folder names for crawlers
 CRAWLER_NAMES=(crawler1 crawler2 crawler3 crawler4 crawler5 crawler6)
-CRAWLER_PORTS=(3001 3002 3003 3004 3005 3006)
+CRAWLER_PORTS=(3000 3001 3002 3003 3004 3005)
 PORT_START=3000
 
 # kill all running crawlers by crawler ports
@@ -21,6 +21,13 @@ done
 for i in "${!CRAWLER_NAMES[@]}"
 do
     cd ${CRAWLER_NAMES[$i]}
+    # is windows git bash terminal?
+    if [ -x "$(command -v winpty)" ]; then
+        sed -i "s/^PORT=.*/PORT=$(($PORT_START+$i))/" "${CRAWLER_NAMES[$i]}/.env"
+    else
+        sed -i '' "s/^PORT=.*/PORT=$(($PORT_START+$i))/" "${CRAWLER_NAMES[$i]}/.env"
+    fi
+    # install environment
     npm install
     # build and run
     npm run build
