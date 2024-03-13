@@ -22,11 +22,14 @@ done
 for ((i=0; i<CRAWLER_COUNT; i++)); do
     CRAWLER_NAME="${CRAWLER_NAME_PREFIX}$i"
     cd $CRAWLER_NAME
-    # is windows git bash terminal?
     if [ -x "$(command -v winpty)" ]; then
         sed -i "s/^PORT=.*/PORT=$(($CRAWLER_START_PORT+$i))/" "$CRAWLER_NAME/.env"
-    else
+    elif [ "$(uname)" = "Darwin" ]; then
         sed -i '' "s/^PORT=.*/PORT=$(($CRAWLER_START_PORT+$i))/" "$CRAWLER_NAME/.env"
+    elif [ "$(lsb_release -is)" = "Ubuntu" ]; then
+        sed -i "s/^PORT=.*/PORT=$(($CRAWLER_START_PORT+$i))/" "$CRAWLER_NAME/.env"
+    else
+        echo "Unsupported system"
     fi
     # install environment
     npm install
