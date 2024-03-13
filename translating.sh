@@ -4,9 +4,12 @@ if ! [ -x "$(command -v pm2)" ]; then
     npm install pm2 -g
 fi
 
-# Folder names for crawlers
-CRAWLER_NAME_PREFIX=crawler
-CRAWLER_COUNT=8
+# Load values from .env file
+source .env
+
+# Now you can use the values
+echo "Crawler name prefix: $CRAWLER_NAME_PREFIX"
+echo "Crawler count: $CRAWLER_COUNT"
 
 # clone repo and create environment for each crawler
 for ((i=0; i<CRAWLER_COUNT; i++)); do

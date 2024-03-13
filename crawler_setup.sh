@@ -5,13 +5,14 @@ if ! [ -x "$(command -v pm2)" ]; then
     npm install pm2 -g
 fi
 
-# Crawler repo
-CRAWLER_REPO=https://github.com/IT18-Rinchindugar/bundle.git
+# Load values from .env file
+source .env
 
-# Folder names for crawlers
-CRAWLER_NAME_PREFIX=crawler
-CRAWLER_COUNT=8
-CRAWLER_START_PORT=3000
+# Now you can use the values
+echo "Crawler repo: $CRAWLER_REPO"
+echo "Crawler name prefix: $CRAWLER_NAME_PREFIX"
+echo "Crawler count: $CRAWLER_COUNT"
+echo "Crawler start port: $CRAWLER_START_PORT"
 
 # clone repo and create environment for each crawler
 for ((i=0; i<CRAWLER_COUNT; i++)); do

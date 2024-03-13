@@ -1,8 +1,11 @@
 #!/bin/bash
 
-# Folder names for crawlers
-CRAWLER_NAME_PREFIX=crawler
-CRAWLER_COUNT=8
+# Load values from .env file
+source .env
+
+# Now you can use the values
+echo "Crawler name prefix: $CRAWLER_NAME_PREFIX"
+echo "Crawler count: $CRAWLER_COUNT"
 
 # delete each crawler
 for ((i=0; i<CRAWLER_COUNT; i++)); do
