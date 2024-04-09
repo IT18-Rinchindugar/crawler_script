@@ -13,6 +13,7 @@ echo "Crawler repo: $CRAWLER_REPO"
 echo "Crawler name prefix: $CRAWLER_NAME_PREFIX"
 echo "Crawler count: $CRAWLER_COUNT"
 echo "Crawler start port: $CRAWLER_START_PORT"
+echo "Queue service url: $QUEUE_SERVICE_URL"
 
 # clone repo and create environment for each crawler
 for ((i=0; i<CRAWLER_COUNT; i++)); do
@@ -21,10 +22,13 @@ for ((i=0; i<CRAWLER_COUNT; i++)); do
     # is windows git bash terminal?
     if [ -x "$(command -v winpty)" ]; then
         sed -i "s/^PORT=.*/PORT=$(($CRAWLER_START_PORT+$i))/" "$CRAWLER_NAME/.env"
+        sed -i "s|^QUEUE_SERVICE_URL=.*|QUEUE_SERVICE_URL=$QUEUE_SERVICE_URL|" "$CRAWLER_NAME/.env"
     elif [ "$(uname)" = "Darwin" ]; then
         sed -i '' "s/^PORT=.*/PORT=$(($CRAWLER_START_PORT+$i))/" "$CRAWLER_NAME/.env"
+        sed -i '' "s|^QUEUE_SERVICE_URL=.*|QUEUE_SERVICE_URL=$QUEUE_SERVICE_URL|" "$CRAWLER_NAME/.env"
     elif [ "$(lsb_release -is)" = "Ubuntu" ]; then
         sed -i "s/^PORT=.*/PORT=$(($CRAWLER_START_PORT+$i))/" "$CRAWLER_NAME/.env"
+        sed -i "s|^QUEUE_SERVICE_URL=.*|QUEUE_SERVICE_URL=$QUEUE_SERVICE_URL|" "$CRAWLER_NAME/.env"
     else
         echo "Unsupported system"
     fi
